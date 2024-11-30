@@ -1,6 +1,114 @@
 ---
-title: "Syllabus"
-format: pdf
+title: "Literate Programming Syllabus"
+author: "John Kulas"
+execute:
+  echo: false
+  warning: false
+format:
+  html:
+    grid:
+      margin-width: 350px
+  pdf: default
+reference-location: margin
+citation-location: margin
 ---
 
-Outline of class
+```{r}
+
+```
+
+
+This is the curricular syllabus for a 15-week course on [literate programming](https://www-cs-faculty.stanford.edu/~knuth/lp.html). The primary programming languages accommodated as of `r format(Sys.time(), "%B %Y")` are:  
+
++ R
++ Python
++ Javascript
++ Julia
+
+:::{.column-margin}
+::: {#nte-lang .callout-note}
+## Languages
+
+The "glue" of literate programming is markdown. Programming language preferences (such as R) should be considered secondary to the more general practice of wrapping analyses into supporting documentation.
+:::
+:::
+
+The primary authoring platform is [Quarto](https://quarto.org/), although historical (e.g., $LaTeX$) and contemporary alternatives (e.g., `rMarkdown`) also will be addressed.
+
+:::{.column-margin}
+::: {#nte-plat .callout-note}
+## Platform versus Language
+
+$LaTeX$ is technically a typesetting system.
+:::
+:::
+
+## Intended audience
+
+Graduate students within the social, behavioral, and management sciences who would like to learn how to wrap analyses and supporting documentation within one authoring platform toward producing occupationally relevant... 
+
++ [Presentations](https://quarto.org/docs/presentations/)
++ [Manuscripts](https://quarto.org/docs/manuscripts/)
++ [Technical Reports](https://quarto.org/docs/visual-editor/technical.html)
++ Feedback Reports
++ [Dashboards](https://quarto.org/docs/dashboards/)
++ [Websites](https://quarto.org/docs/websites/)
++ [Books](https://quarto.org/docs/books/)
+
+See @fig-pinko & @nte-lang
+
+```{r}
+#| label: fig-margin
+#| fig-cap: "MPG vs horsepower, colored by transmission."
+#| column: margin
+#| message: false
+library(ggplot2)
+mtcars2 <- mtcars
+mtcars2$am <- factor(
+  mtcars$am, labels = c('automatic', 'manual')
+)
+ggplot(mtcars2, aes(hp, mpg, color = am)) +
+  geom_point() + geom_smooth() +
+  theme(legend.position = 'bottom')
+```
+
+:::{.column-margin}
+![Pinko](https://i.pinimg.com/236x/7e/26/ba/7e26bae22d122189e1bfcb0139a92f8a.jpg){#fig-pinko}
+:::
+
+## Course schedule
+
+```{r, eval=FALSE}
+#| tbl-cap-location: margin
+#| tbl-cap: Tentative schedule
+#| label: tbl-sked
+
+Week <- c("Week 1", "Week 2", "Week 3", "Week 4", "Week 5", "Week 6", "Week 7", "Week 8", "Week 9", "Week 10", "Week 11", "Week 12", "Week 13", "Week 14", "Week 15")
+
+Section <- c("Fundamentals", "", "", "", "", 
+             "Products", "", "", "", "", "", "", "",
+             "Distribution", "")
+
+Topic <- c("Intro",
+           "Platforms",
+           "Languages",
+           "html & $LaTeX$",
+           "css & packages",
+                "Presentations",
+                "Manuscripts",
+                "Theses & Dissertations",
+                "Dashboards",
+                "Technical Reports",
+                "Feedback Reports",
+                "Websites",
+                "Books",
+           "Security",
+           "Sharing"
+           )
+
+knitr::kable(
+cbind(Week,Section,Topic)
+)
+```
+
+Check out @tbl-sked
